@@ -114,6 +114,10 @@ public class ResponseUtils {
 		ResultCode resultCode = ResultCode.SERVER_ERROR;
 		writeResponse(request, response, resultCode.getCode(), resultCode.getMsg(), data);
 	}
+	
+	public static void writeEmptyResponse(HttpServletRequest request, HttpServletResponse response, ResultCode resultCode) {
+		writeResponse(request, response, resultCode.getCode(), resultCode.getMsg(), null);
+	}
 
 	public static String getDefaultJsonCallback() {
 		return DEFAULT_JSON_CALLBACK;
