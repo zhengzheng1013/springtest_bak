@@ -20,4 +20,9 @@ public class HelloworldAction {
 			e.printStackTrace();
 		}
 	}
+	
+	@RequestMapping("index")
+	public String indexVm(HttpServletRequest request, HttpServletResponse response) {
+		return "index";
+	}
 }
