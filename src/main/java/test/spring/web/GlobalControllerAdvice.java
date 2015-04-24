@@ -6,10 +6,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.TypeMismatchException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import test.spring.common.ResponseUtils;
+import test.spring.exception.BusinessException;
 
 @ControllerAdvice
 public class GlobalControllerAdvice {
@@ -20,8 +23,16 @@ public class GlobalControllerAdvice {
 	public void handleException(HttpServletRequest request, HttpServletResponse response, Exception e) {
 		logRequestParameters(request);
 		logger.error("handleGlobalException:", e);
+		// 参数类型不匹配、参数缺失
+		if(e instanceof TypeMismatchException || e instanceof MissingServletRequestParameterException) {
+			ResponseUtils.writeEmptyResponse(request, response, ResultCode.PARAMETER_ERROR);
+		} else if(e instanceof BusinessException) {
+			BusinessException be = (BusinessException) e;
+			ResponseUtils.writeResponse(request, response, be.getCode(), be.getMsg(), null);
+		} else {
+			ResponseUtils.writeErrorResponse(request, response, null);
+		}
 		
-		ResponseUtils.writeErrorResponse(request, response, null);
 	}
 	
 	@SuppressWarnings("unchecked")
