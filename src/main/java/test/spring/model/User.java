@@ -10,7 +10,7 @@ public class User extends AbstractModel {
 	
 	private String email;
 	
-	private String nickname;
+	private transient String password;
 	
 	private String createTime;
 
@@ -38,14 +38,6 @@ public class User extends AbstractModel {
 		this.email = email;
 	}
 
-	public String getNickname() {
-		return nickname;
-	}
-
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
-
 	public String getCreateTime() {
 		return createTime;
 	}
@@ -54,4 +46,11 @@ public class User extends AbstractModel {
 		this.createTime = createTime;
 	}
 	
+	public String getPassword() {
+		return password;
+	}
+	
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }

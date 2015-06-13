@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>   
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="UserDAO">
-	<select id="getUser" parameterType="int" resultType="User">
-		SELECT id, username, email, nickname, create_time AS createTime
-		FROM user WHERE id=#{value}
+	<resultMap type="User" id="User">
+		<result column="id" property="id"/>
+		<result column="username" property="username"/>
+		<result column="email" property="email"/>
+		<result column="password" property="password"/>
+		<result column="create_time" property="createTime"/>
+	</resultMap>
+	<select id="getUser" parameterType="int" resultMap="User">
+		SELECT * FROM user WHERE id=#{value}
 	</select>
+	
+	<select id="getUserByName" parameterType="string" resultMap="User">
+		SELECT * FROM user WHERE username=#{value}
+	</select>
+	
+	<select id="getUserByEmail" parameterType="string" resultMap="User">
+		SELECT * FROM user WHERE email=#{email}
+	</select>
+	
+	<insert id="addUser" parameterType="UserForm">
+		INSERT INTO user(username, email, password, create_time)
+		VALUES(#{username}, #{email}, #{password}, now())
+	</insert>
 </mapper>

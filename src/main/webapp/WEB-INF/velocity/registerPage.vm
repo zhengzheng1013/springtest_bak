@@ -1,0 +1,27 @@
+<!doctype>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>用户注册</title>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+	</head>
+	
+	<body>
+		<div>
+			<span>用户名：</span>
+			<input id="username" type="text"><br>
+			<span>邮箱：</span>
+			<input id="email" type="text"><br>
+			<span>密码：</span>
+			<input id="password" type="password"><br>
+			<span>重输密码：</span>
+			<input id="repPassword" type="password"><br>
+			
+			<button id="submitRegister">注册</button>
+		</div>
+		
+		<script type="text/javascript" src="../js/jquery-1.11.0.js"></script>
+		<script type="text/javascript" src="../js/bootstrap.js"></script>
+		<script type="text/javascript" src="../js/register.js"></script>
+	</body>
+</html>
