@@ -1,0 +1,23 @@
+<!doctype>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>用户登录</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+	</head>
+	
+	<body>
+		<div>
+			<span>用户名\邮箱：</span>
+			<input id="loginname" type="text"><br>
+			<span>密码：</span>
+			<input id="password" type="password"><br>
+			
+			<button id="submitLogin">登录</button>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/login.js"></script>
+	</body>
+</html>

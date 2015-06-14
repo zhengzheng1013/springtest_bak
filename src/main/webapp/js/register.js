@@ -7,7 +7,7 @@
 			var repPassword = $('#username').val();
 			
 			$.ajax({
-				url : 'register.action',
+				url : 'service/user/register.action',
 				method : 'post',
 				data : {
 					username : username,
@@ -16,7 +16,7 @@
 				},
 				dateType : 'json',
 				success : function() {
-					console.log("success");
+					window.top.location.href = 'login.action';
 				}
 			});
 		});

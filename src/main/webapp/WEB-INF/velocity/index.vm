@@ -1,1 +1,2 @@
-Velocity INDEX page.
+Hello, $username
+<a href="logout.action">Logout</a>
