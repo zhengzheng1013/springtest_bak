@@ -1,2 +1,28 @@
-Hello, $username
-<a href="logout.action">Logout</a>
+<!doctype>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>用户注册</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+	</head>
+	
+	<body>
+		Hello, $username<br>
+		余额：$balance<br><br>
+		
+		充值：<br>
+		金额：<input id="rechargeAmmount" type="text"><br>
+		<button id="submitRecharge">充值</button><br>
+		
+		转账：<br>
+		用户：<input id="transferUid" type="text"><br>
+		金额：<input id="transferAmmount" type="text"><br>
+		<button id="submitTransfer">转账</button><br>
+		
+		<a href="logout.action">Logout</a>
+		
+		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+	</body>
+</html>

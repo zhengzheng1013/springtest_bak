@@ -36,4 +36,13 @@ public class WebUtils extends org.springframework.web.util.WebUtils {
 		cookie.setPath(path);
 		response.addCookie(cookie);
 	}
+	
+	public static int getLoginUserId(HttpServletRequest request) {
+		Cookie cookie = WebUtils.getCookie(request, "uid");
+		if(cookie != null) {
+			return Integer.parseInt(cookie.getValue());
+		}
+		
+		return -1;
+	}
 }

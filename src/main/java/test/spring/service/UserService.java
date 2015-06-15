@@ -17,6 +17,9 @@ public class UserService {
 	@Resource
 	private UserDAO userDAO;
 	
+	@Resource
+	private AccountService accountService;
+	
 	public boolean addUser(UserForm userForm) {
 		return userDAO.addUser(userForm);
 	}
@@ -52,6 +55,9 @@ public class UserService {
 			return null;
 		}
 		
-		return getUserByName(username);
+		User user = getUserByName(username);
+		accountService.createAccount(user.getId());
+		
+		return user;
 	}
 }
