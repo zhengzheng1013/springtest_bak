@@ -31,9 +31,6 @@ public class AccountService {
 			result = accountDAO.modifyAmmount(toUserId, ammount);
 		}
 		
-		if(!result) {
-			// TODO rollback
-		}
 		return result;
 	}
 }
