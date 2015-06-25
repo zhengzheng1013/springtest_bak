@@ -4,8 +4,10 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="test.spring.model.User" alias="User"/>
+		<typeAlias type="test.spring.model.UserForm" alias="UserForm"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="test/spring/dao/UserDAO.xml"/>
+		<mapper resource="test/spring/dao/AccountDAO.xml"/>
 	</mappers>
 </configuration>

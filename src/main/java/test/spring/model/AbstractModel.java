@@ -3,6 +3,7 @@ package test.spring.model;
 import java.io.Serializable;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 
 /**
  * @classname: AbstractModel
@@ -19,6 +20,10 @@ public class AbstractModel implements Serializable {
 	 */
 	public String toJson() {
 		return JSON.toJSONString(this);
+	}
+	
+	public JSONObject toJSONObject() {
+		return JSON.parseObject(toJson());
 	}
 
 	/**
