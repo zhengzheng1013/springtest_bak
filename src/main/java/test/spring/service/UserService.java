@@ -20,6 +20,10 @@ public class UserService {
 	@Resource
 	private AccountService accountService;
 	
+	public UserService() {
+		logger.info("UserService construct");
+	}
+	
 	public boolean addUser(UserForm userForm) {
 		return userDAO.addUser(userForm);
 	}
