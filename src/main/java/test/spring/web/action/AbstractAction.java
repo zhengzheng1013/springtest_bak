@@ -7,7 +7,7 @@ import org.apache.commons.lang.StringUtils;
 
 import test.spring.common.BizUtil;
 import test.spring.exception.BusinessException;
-import test.spring.web.ResultCode;
+import test.spring.web.ErrorCode;
 
 public abstract class AbstractAction {
 
@@ -22,7 +22,7 @@ public abstract class AbstractAction {
 	 */
 	public void checkParamBlank(Object... args) throws BusinessException {
 		if (BizUtil.isExistBlank(args)) {
-			throw new BusinessException(ResultCode.PARAMETER_ERROR, "必填参数为空");
+			throw new BusinessException(ErrorCode.PARAMETER_ERROR, "必填参数为空");
 		}
 	}
 
@@ -34,7 +34,7 @@ public abstract class AbstractAction {
 	 */
 	public void checkParamAllBlank(Object... args) throws BusinessException {
 		if (BizUtil.isAllBlank(args)) {
-			throw new BusinessException(ResultCode.PARAMETER_ERROR, "必填参数为空");
+			throw new BusinessException(ErrorCode.PARAMETER_ERROR, "必填参数为空");
 		}
 	}
 
@@ -46,7 +46,7 @@ public abstract class AbstractAction {
 	 */
 	public void checkNonPositiveParam(Number... args) throws BusinessException {
 		if (BizUtil.isExistNonPositive(args)) {
-			throw new BusinessException(ResultCode.PARAMETER_ERROR, "参数存在无效值");
+			throw new BusinessException(ErrorCode.PARAMETER_ERROR, "参数存在无效值");
 		}
 	}
 
@@ -59,7 +59,7 @@ public abstract class AbstractAction {
 	 */ 
 	public void checkPaginationParam(int offset, int count) throws BusinessException {
 		if (offset < 0 || count <= 0 || count > DEFAULT_LIST_MAX_SIZE) {
-			throw new BusinessException(ResultCode.PARAMETER_ERROR, "分页参数无效");
+			throw new BusinessException(ErrorCode.PARAMETER_ERROR, "分页参数无效");
 		}
 	}
 
@@ -76,7 +76,7 @@ public abstract class AbstractAction {
 		}
 		for (String str : listStr.split(",")) {
 			if (!StringUtils.isNumeric(str)) {
-				throw new BusinessException(ResultCode.PARAMETER_ERROR, "参数存在无效值");
+				throw new BusinessException(ErrorCode.PARAMETER_ERROR, "参数存在无效值");
 			}
 		}
 	}
@@ -89,10 +89,10 @@ public abstract class AbstractAction {
 	 */
 	public void checkListParam(String listStr) throws BusinessException {
 		if (StringUtils.isBlank(listStr) || listStr.split(",").length <= 0) {
-			throw new BusinessException(ResultCode.PARAMETER_ERROR, "list参数为空");
+			throw new BusinessException(ErrorCode.PARAMETER_ERROR, "list参数为空");
 		}
 		if (listStr.split(",").length > DEFAULT_LIST_MAX_SIZE) {
-			throw new BusinessException(ResultCode.PARAMETER_ERROR, "list参数超长");
+			throw new BusinessException(ErrorCode.PARAMETER_ERROR, "list参数超长");
 		}
 	}
 
@@ -105,10 +105,10 @@ public abstract class AbstractAction {
 	 */
 	public void checkListParam(String listStr, int maxSize) throws BusinessException {
 		if (StringUtils.isBlank(listStr) || listStr.split(",").length <= 0) {
-			throw new BusinessException(ResultCode.PARAMETER_ERROR, "list参数为空");
+			throw new BusinessException(ErrorCode.PARAMETER_ERROR, "list参数为空");
 		}
 		if (listStr.split(",").length > maxSize) {
-			throw new BusinessException(ResultCode.PARAMETER_ERROR, "list参数超长");
+			throw new BusinessException(ErrorCode.PARAMETER_ERROR, "list参数超长");
 		}
 	}
 
@@ -121,10 +121,10 @@ public abstract class AbstractAction {
 	 */
 	public <T> void checkListParam(List<T> list, int maxSize) throws BusinessException {
 		if (CollectionUtils.isEmpty(list)) {
-			throw new BusinessException(ResultCode.PARAMETER_ERROR, "list参数为空");
+			throw new BusinessException(ErrorCode.PARAMETER_ERROR, "list参数为空");
 		}
 		if (list.size() > maxSize) {
-			throw new BusinessException(ResultCode.PARAMETER_ERROR, "list参数超长");
+			throw new BusinessException(ErrorCode.PARAMETER_ERROR, "list参数超长");
 		}
 	}
 	

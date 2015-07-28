@@ -8,7 +8,7 @@
 		<result column="password" property="password"/>
 		<result column="create_time" property="createTime"/>
 	</resultMap>
-	<select id="getUser" parameterType="int" resultMap="User">
+	<select id="getUser" parameterType="long" resultMap="User">
 		SELECT * FROM user WHERE id=#{value}
 	</select>
 	

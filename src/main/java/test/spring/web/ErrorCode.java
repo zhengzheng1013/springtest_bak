@@ -1,6 +1,6 @@
 package test.spring.web;
 
-public enum ResultCode {
+public enum ErrorCode {
 
 	SUCCESS(0, "success."),
 	
@@ -8,15 +8,19 @@ public enum ResultCode {
 	
 	PARAMETER_ERROR(-2, "参数错误!"),
 	
-	USER_NOT_EXISTS(-2001, "用户不存在"),
+	USER_NOT_EXISTS(-2001, "博客不存在"),
 	
-	PASSWORD_NOT_CORRECT(-2002, "用户名与密码不匹配！");
+	PASSWORD_NOT_CORRECT(-2002, "用户名与密码不匹配！"),
+	
+	BLOG_NOT_EXISTS(-2003, "博客不存在"),
+	
+	USER_NOT_BLOG_OWNER(-2004, "无权限编辑此博客");
 
 	private int code;
 
 	private String msg;
 
-	ResultCode(int code, String msg) {
+	ErrorCode(int code, String msg) {
 		this.code = code;
 		this.msg = msg;
 	}

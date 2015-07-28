@@ -26,24 +26,24 @@ public class AccountService {
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED, isolation=Isolation.READ_COMMITTED, readOnly = true)
-	public double getBalance(int userId) {
+	public double getBalance(long userId) {
 		transactionService.test1();
 		transactionService.test2();
 		return accountDAO.getBalance(userId);
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED, isolation=Isolation.READ_COMMITTED)
-	public boolean createAccount(int userId) {
+	public boolean createAccount(long userId) {
 		return accountDAO.createAccount(userId);
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED, isolation=Isolation.READ_COMMITTED)
-	public boolean modifyAmmount(int userId, int ammount) {
+	public boolean modifyAmmount(long userId, double ammount) {
 		return accountDAO.modifyAmmount(userId, ammount);
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED, isolation=Isolation.READ_COMMITTED)
-	public boolean transfer(int fromUserId, int toUserId, double ammount) {
+	public boolean transfer(long fromUserId, long toUserId, double ammount) {
 		double fromBalance = this.getBalance(fromUserId);
 		if (fromBalance < ammount) {
 			logger.error("transfer ERROR, fromBalance=" + fromBalance

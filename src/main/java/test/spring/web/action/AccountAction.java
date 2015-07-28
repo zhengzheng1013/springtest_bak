@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import test.spring.common.ResponseUtils;
 import test.spring.service.AccountService;
-import test.spring.web.ResultCode;
+import test.spring.web.ErrorCode;
 import test.spring.web.WebUtils;
 
 @Controller
@@ -22,10 +22,10 @@ public class AccountAction {
 	
 	@RequestMapping("recharge")
 	public void recharge(HttpServletRequest request, HttpServletResponse response,
-			@RequestParam(value = "ammount") int ammount) {
-		int userId = WebUtils.getLoginUserId(request);
+			@RequestParam(value = "ammount") double ammount) {
+		long userId = WebUtils.getLoginUserId(request);
 		if(userId <= 0) {
-			ResponseUtils.writeEmptyResponse(request, response, ResultCode.USER_NOT_EXISTS);
+			ResponseUtils.writeEmptyResponse(request, response, ErrorCode.USER_NOT_EXISTS);
 			return;
 		}
 		
@@ -33,18 +33,18 @@ public class AccountAction {
 		if(result) {
 			ResponseUtils.writeSuccessResponse(request, response, null);
 		} else {
-			ResponseUtils.writeEmptyResponse(request, response, ResultCode.USER_NOT_EXISTS);
+			ResponseUtils.writeEmptyResponse(request, response, ErrorCode.USER_NOT_EXISTS);
 		}
 	}
 	
 	@RequestMapping("transfer")
 	public void transfer(HttpServletRequest request, HttpServletResponse response,
-			@RequestParam(value = "uid") int userId,
+			@RequestParam(value = "uid") long userId,
 			@RequestParam(value = "ammount") double ammount) {
-		int fromUserId = WebUtils.getLoginUserId(request);
-		int toUserId = userId;
+		long fromUserId = WebUtils.getLoginUserId(request);
+		long toUserId = userId;
 		if(fromUserId <=0 || toUserId <= 0) {
-			ResponseUtils.writeEmptyResponse(request, response, ResultCode.USER_NOT_EXISTS);
+			ResponseUtils.writeEmptyResponse(request, response, ErrorCode.USER_NOT_EXISTS);
 			return;
 		}
 		
@@ -52,7 +52,7 @@ public class AccountAction {
 		if(result) {
 			ResponseUtils.writeSuccessResponse(request, response, null);
 		} else {
-			ResponseUtils.writeEmptyResponse(request, response, ResultCode.USER_NOT_EXISTS);
+			ResponseUtils.writeEmptyResponse(request, response, ErrorCode.USER_NOT_EXISTS);
 		}
 	}
 }

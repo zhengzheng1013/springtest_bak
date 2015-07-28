@@ -13,7 +13,7 @@ import test.spring.exception.BusinessException;
 import test.spring.model.User;
 import test.spring.model.UserForm;
 import test.spring.service.UserService;
-import test.spring.web.ResultCode;
+import test.spring.web.ErrorCode;
 import test.spring.web.WebUtils;
 
 @Controller
@@ -25,14 +25,14 @@ public class UserAction extends AbstractAction {
 
 	@RequestMapping("getUser")
 	public void getUser(HttpServletRequest request, HttpServletResponse response,
-			@RequestParam(value = "userId", defaultValue = "-1") int userId) throws BusinessException {
+			@RequestParam(value = "userId", defaultValue = "-1") long userId) throws BusinessException {
 		checkNonPositiveParam(userId);
 		
 		User user = userService.getUser(userId);
 		if(user != null) {
 			ResponseUtils.writeSuccessResponse(request, response, user);
 		} else {
-			ResponseUtils.writeEmptyResponse(request, response, ResultCode.USER_NOT_EXISTS);
+			ResponseUtils.writeEmptyResponse(request, response, ErrorCode.USER_NOT_EXISTS);
 		}
 	}
 	
@@ -47,7 +47,7 @@ public class UserAction extends AbstractAction {
 		if(user != null) {
 			ResponseUtils.writeSuccessResponse(request, response, user);
 		} else {
-			ResponseUtils.writeEmptyResponse(request, response, ResultCode.SERVER_ERROR);
+			ResponseUtils.writeEmptyResponse(request, response, ErrorCode.SERVER_ERROR);
 		}
 	}
 	
@@ -63,12 +63,12 @@ public class UserAction extends AbstractAction {
 			user = userService.getUserByEmail(loginname);
 		}
 		if(user == null) {
-			ResponseUtils.writeEmptyResponse(request, response, ResultCode.USER_NOT_EXISTS);
+			ResponseUtils.writeEmptyResponse(request, response, ErrorCode.USER_NOT_EXISTS);
 			return;
 		}
 		
 		if(!password.equals(user.getPassword())) {
-			ResponseUtils.writeEmptyResponse(request, response, ResultCode.PASSWORD_NOT_CORRECT);
+			ResponseUtils.writeEmptyResponse(request, response, ErrorCode.PASSWORD_NOT_CORRECT);
 			return;
 		}
 		

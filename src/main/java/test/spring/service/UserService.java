@@ -28,7 +28,7 @@ public class UserService {
 		return userDAO.addUser(userForm);
 	}
 	
-	public User getUser(int userId) {
+	public User getUser(long userId) {
 		return userDAO.getUser(userId);
 	}
 	

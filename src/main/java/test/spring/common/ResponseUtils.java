@@ -13,7 +13,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
-import test.spring.web.ResultCode;
+import test.spring.web.ErrorCode;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
@@ -106,16 +106,16 @@ public class ResponseUtils {
 	}
 	
 	public static void writeSuccessResponse(HttpServletRequest request, HttpServletResponse response, Object data) {
-		ResultCode resultCode = ResultCode.SUCCESS;
+		ErrorCode resultCode = ErrorCode.SUCCESS;
 		writeResponse(request, response, resultCode.getCode(), resultCode.getMsg(), data);
 	}
 	
 	public static void writeErrorResponse(HttpServletRequest request, HttpServletResponse response, Object data) {
-		ResultCode resultCode = ResultCode.SERVER_ERROR;
+		ErrorCode resultCode = ErrorCode.SERVER_ERROR;
 		writeResponse(request, response, resultCode.getCode(), resultCode.getMsg(), data);
 	}
 	
-	public static void writeEmptyResponse(HttpServletRequest request, HttpServletResponse response, ResultCode resultCode) {
+	public static void writeEmptyResponse(HttpServletRequest request, HttpServletResponse response, ErrorCode resultCode) {
 		writeResponse(request, response, resultCode.getCode(), resultCode.getMsg(), null);
 	}
 

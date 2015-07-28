@@ -34,6 +34,7 @@
 	</bean>
 	<bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
 		<property name="suffix" value=".vm"></property>
+		<property name="toolboxConfigLocation" value="WEB-INF/classes/velocity_toolbox.xml"></property>
 		<property name="contentType" value="text/html;charset=utf-8"></property>
 	</bean>
 	

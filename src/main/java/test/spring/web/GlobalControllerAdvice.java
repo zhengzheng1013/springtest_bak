@@ -25,7 +25,7 @@ public class GlobalControllerAdvice {
 		logger.error("handleGlobalException:", e);
 		// 参数类型不匹配、参数缺失
 		if(e instanceof TypeMismatchException || e instanceof MissingServletRequestParameterException) {
-			ResponseUtils.writeEmptyResponse(request, response, ResultCode.PARAMETER_ERROR);
+			ResponseUtils.writeEmptyResponse(request, response, ErrorCode.PARAMETER_ERROR);
 		} else if(e instanceof BusinessException) {
 			BusinessException be = (BusinessException) e;
 			ResponseUtils.writeResponse(request, response, be.getCode(), be.getMsg(), null);

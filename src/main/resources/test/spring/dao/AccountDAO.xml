@@ -2,7 +2,7 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="AccountDAO">
 
-	<select id="getBalance" parameterType="int" resultType="double">
+	<select id="getBalance" parameterType="long" resultType="double">
 		SELECT balance FROM user_account WHERE user_id=#{value}
 	</select>
 	
@@ -10,7 +10,7 @@
 		UPDATE user_account SET balance = balance + #{ammount} WHERE user_id=#{userId}
 	</update>
 	
-	<insert id="createAccount" parameterType="int">
+	<insert id="createAccount" parameterType="long">
 		INSERT INTO user_account(user_id, balance, create_time)
 		VALUES(#{value}, 0, now())
 	</insert>

@@ -1,16 +1,16 @@
 package test.spring.exception;
 
-import test.spring.web.ResultCode;
+import test.spring.web.ErrorCode;
 
 public class BusinessException extends Exception {
 
 	private static final long serialVersionUID = -892107245914897170L;
 
 	/** 异常码 */
-	private int code = ResultCode.SERVER_ERROR.getCode();
+	private int code = ErrorCode.SERVER_ERROR.getCode();
 
 	/** 异常提示信息 */
-	private String msg = ResultCode.SERVER_ERROR.getMsg();
+	private String msg = ErrorCode.SERVER_ERROR.getMsg();
 
 	/** 异常，可选 */
 	private Throwable throwable;
@@ -26,15 +26,15 @@ public class BusinessException extends Exception {
 		this.throwable = throwable;
 	}
 
-	public BusinessException(ResultCode ResultCode) {
+	public BusinessException(ErrorCode ResultCode) {
 		this(ResultCode.getCode(), ResultCode.getMsg());
 	}
 
-	public BusinessException(ResultCode ResultCode, Throwable throwable) {
+	public BusinessException(ErrorCode ResultCode, Throwable throwable) {
 		this(ResultCode.getCode(), ResultCode.getMsg(), throwable);
 	}
 
-	public BusinessException(ResultCode ResultCode, String extMsg) {
+	public BusinessException(ErrorCode ResultCode, String extMsg) {
 		this(ResultCode.getCode(), ResultCode.getMsg() + "(" + extMsg + ")");
 	}
 

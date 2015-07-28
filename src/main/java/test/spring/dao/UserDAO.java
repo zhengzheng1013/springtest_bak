@@ -8,7 +8,7 @@ import test.spring.model.UserForm;
 @Repository
 public class UserDAO extends AbstractDAO {
 	
-	public User getUser(int userId) {
+	public User getUser(long userId) {
 		return sqlSession.selectOne("UserDAO.getUser", userId);
 	}
 	

@@ -4,7 +4,7 @@ public class User extends AbstractModel {
 	
 	private static final long serialVersionUID = -3416607947891919326L;
 
-	private int id;
+	private long id;
 	
 	private String username;
 	
@@ -14,11 +14,11 @@ public class User extends AbstractModel {
 	
 	private String createTime;
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
