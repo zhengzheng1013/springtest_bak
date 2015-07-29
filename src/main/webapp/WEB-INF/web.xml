@@ -43,12 +43,10 @@
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>*.action</url-pattern>
 	</servlet-mapping>
-<<<<<<< HEAD
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>*.html</url-pattern>
 	</servlet-mapping>
-=======
 	
 	<filter>
         <filter-name>UrlRewriteFilter</filter-name>
@@ -64,7 +62,6 @@
     	<filter-name>UrlRewriteFilter</filter-name>
     	<url-pattern>*.html</url-pattern>
     </filter-mapping>
->>>>>>> branch 'master' of https://github.com/xuefeng0707/springtest.git
 
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
