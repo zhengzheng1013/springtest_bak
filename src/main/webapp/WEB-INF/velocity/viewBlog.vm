@@ -1,0 +1,24 @@
+<!doctype>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>$blog.title</title>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+		<script type="text/javascript">
+		var blogId = $!blog.id;
+		</script>
+	</head>
+	
+	<body>
+		Hello, $username<br>
+		标题：$blog.title<br>
+		发布时间：$!date.format("yyyy-MM-dd HH:mm:ss", $blog.createTime)<br>
+		正文：<br>
+		$blog.content<br>
+		<button id="editBlog">编辑</button>
+		
+		<script type="text/javascript" src="../js/jquery-1.11.0.js"></script>
+		<script type="text/javascript" src="../js/bootstrap.js"></script>
+		<script type="text/javascript" src="../js/blog.js"></script>
+	</body>
+</html>

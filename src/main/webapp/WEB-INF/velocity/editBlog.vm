@@ -1,0 +1,23 @@
+<!doctype>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>#if($blog.id)编辑文章$!blog.title #else 发表新文章 #end</title>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+		<script type="text/javascript">
+		var blogId = $!blog.id;
+		</script>
+	</head>
+	
+	<body>
+		Hello, $username<br>
+		标题：<input id="title" value="$!blog.title" /><br>
+		正文：<br>
+		<textarea id="content">$!blog.content</textarea><br>
+		<button id="saveBlog">保存</button>
+		
+		<script type="text/javascript" src="../js/jquery-1.11.0.js"></script>
+		<script type="text/javascript" src="../js/bootstrap.js"></script>
+		<script type="text/javascript" src="../js/blog.js"></script>
+	</body>
+</html>
